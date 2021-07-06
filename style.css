@@ -236,7 +236,7 @@ div.content b{
 
 div.content img{
     width: 96vw;
-    max-width: 800px;
+    max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,0.5);
 }
