@@ -75,3 +75,12 @@ const observer3 = new IntersectionObserver(entries => {
     })
 })
 observer3.observe(document.querySelector('.content.tictactoe .inner p'))
+
+
+function appHeight() {
+    const doc = document.documentElement
+    doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px')
+}
+
+window.addEventListener('resize', appHeight)
+appHeight()
