@@ -79,8 +79,7 @@ observer3.observe(document.querySelector('.content.tictactoe .inner p'))
 
 
 function appHeight() {
-    const doc = document.documentElement
-    doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px')
+    document.documentElement.style.setProperty('--vh', (window.innerHeight*.01) + 'px')
 }
 
 appHeight()
