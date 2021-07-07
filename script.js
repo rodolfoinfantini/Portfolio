@@ -1,4 +1,4 @@
-const delay = 5000
+const delay = 4500
 const container = document.querySelector("div.container")
 let stop = false
 
@@ -8,14 +8,14 @@ setTimeout(function(){
 
 document.onscroll = () => {
     let y = window.pageYOffset
+    updateProgressBar()
     /* console.log(y) */
     if(y < 70){
         document.querySelector("a.top").style = ""
     }else{
         document.querySelector("a.top").style.display = "block"
     }
-
-    if(stop) return
+    
     
     
     /* if(y > 200){
@@ -27,6 +27,14 @@ document.onscroll = () => {
         stop = true
     } */
 }
+
+function updateProgressBar(){
+    var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) - window.innerHeight;
+    document.querySelector("progress.scrollprogress").value = window.pageYOffset
+    document.querySelector("progress.scrollprogress").max = limit
+}
+
+updateProgressBar()
 
 window.onresize = () => {
     showImgs()
