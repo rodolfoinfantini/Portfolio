@@ -150,6 +150,10 @@ svg.arrow{
     opacity 1.5s ease-in calc(var(--type-duration) + var(--float-duration) + 0.2s) forwards;
 }
 
+.asnake, .achess{
+    display: none;
+}
+
 @keyframes type {
     from{
         transform: translateX(0%);

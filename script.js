@@ -21,3 +21,23 @@ document.onscroll = (e) => {
         document.querySelector("a.top").style = ""
     }
 }
+
+window.onresize = () => {
+    showImgs()
+}
+
+showImgs()
+
+function showImgs(){
+    if(document.body.offsetWidth < 1260){
+        document.querySelector(".achess").style.display = "flex"
+        document.querySelector(".asnake").style.display = "flex"
+        document.querySelector(".content.chess iframe").style.display = "none"
+        document.querySelector(".content.snake iframe").style.display = "none"
+    }else{
+        document.querySelector(".achess").style = ""
+        document.querySelector(".asnake").style = ""
+        document.querySelector(".content.chess iframe").style.display = "flex"
+        document.querySelector(".content.snake iframe").style.display = "flex"
+    }
+}
