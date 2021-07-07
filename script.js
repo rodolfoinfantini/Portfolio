@@ -30,6 +30,7 @@ document.onscroll = () => {
 
 window.onresize = () => {
     showImgs()
+    appHeight()
 }
 
 showImgs()
@@ -82,5 +83,4 @@ function appHeight() {
     doc.style.setProperty('--vh', (window.innerHeight*.01) + 'px')
 }
 
-window.addEventListener('resize', appHeight)
 appHeight()
