@@ -79,6 +79,10 @@ div.welcome{
     overflow: hidden;
 }
 
+.content .inner h2{
+    text-align: center;
+}
+
 div.welcome div.text{
     text-align: center;
     font-family: var(--mono-space-font)!important;
