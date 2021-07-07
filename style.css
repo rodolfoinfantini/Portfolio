@@ -290,6 +290,7 @@ div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe 
     transform: scale(2);
     transform-origin: bottom;
     margin: 25px 0 20px 0;
+    fill: rgb(30,30,30);
 }
 
 .githubsvg.white{
