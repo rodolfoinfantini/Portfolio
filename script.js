@@ -17,14 +17,15 @@ document.onscroll = () => {
 
     if(stop) return
     
-    if(y > 200){
+    
+    /* if(y > 200){
         document.querySelector("div.content.chess div.inner").style.animation = "floatfromright 2s ease forwards"
     }if(y > 1190){
         document.querySelector("div.content.snake div.inner").style.animation = "floatfromright 2s ease forwards"
     }if(y > 2250){
         document.querySelector("div.content.tictactoe div.inner").style.animation = "floatfromright 2s ease forwards"
         stop = true
-    }
+    } */
 }
 
 window.onresize = () => {
@@ -46,3 +47,31 @@ function showImgs(){
         document.querySelector(".content.snake iframe").style.display = "flex"
     }
 }
+
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.chess .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer.observe(document.querySelector('.content.chess .inner p'))
+
+const observer2 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.snake .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer2.observe(document.querySelector('.content.snake .inner p'))
+
+const observer3 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.tictactoe .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer3.observe(document.querySelector('.content.tictactoe .inner p'))
