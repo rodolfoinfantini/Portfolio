@@ -55,6 +55,7 @@ div.welcome{
     justify-content: center;
     color: #fff;
     overflow: hidden;
+    min-height: -webkit-fill-available;
 }
 
 div.welcome div.text{
