@@ -1,24 +1,29 @@
 const delay = 5000
 const container = document.querySelector("div.container")
-document.querySelector("a.top").style.display = "none"
+let stop = false
+
 setTimeout(function(){
     container.style.display = "flex"
 }, delay)
 
-document.onscroll = (e) => {
+document.onscroll = () => {
     let y = window.pageYOffset
     /* console.log(y) */
+    if(y < 70){
+        document.querySelector("a.top").style = ""
+    }else{
+        document.querySelector("a.top").style.display = "block"
+    }
+
+    if(stop) return
+    
     if(y > 200){
         document.querySelector("div.content.chess div.inner").style.animation = "floatfromright 2s ease forwards"
     }if(y > 1190){
         document.querySelector("div.content.snake div.inner").style.animation = "floatfromright 2s ease forwards"
     }if(y > 2250){
         document.querySelector("div.content.tictactoe div.inner").style.animation = "floatfromright 2s ease forwards"
-    }
-    if(y < 70){
-        document.querySelector("a.top").style.display = "none"
-    }else{
-        document.querySelector("a.top").style = ""
+        stop = true
     }
 }
 
@@ -29,7 +34,7 @@ window.onresize = () => {
 showImgs()
 
 function showImgs(){
-    if(document.body.offsetWidth < 1260){
+    if(document.body.offsetWidth < 1260 || window.innerHeight < 380){
         document.querySelector(".achess").style.display = "flex"
         document.querySelector(".asnake").style.display = "flex"
         document.querySelector(".content.chess iframe").style.display = "none"

@@ -9,6 +9,7 @@
     --float-delay: 0.2s;
     --blink-duration: 0.35s;
     --show-delay: 0.5s;
+    
 }
 
 /* width */
@@ -280,6 +281,50 @@ iframe{
 div.content.chess iframe{
     width: 1250px;
     height: 850px;
+    /* transform: scale(0.85); */
+    /* margin: -50px 0; */
+}
+
+@media (max-height: 860px){
+    div.content.chess iframe{
+        transform: scale(0.85);
+        margin: -50px 0;
+    }
+}
+
+@media (max-height: 720px){
+    div.content.chess iframe{
+        transform: scale(0.75);
+        margin: -100px 0;
+    }
+}
+
+@media (max-height: 650px){
+    div.content.chess iframe{
+        transform: scale(0.65);
+        margin: -150px 0;
+    }
+}
+
+@media (max-height: 565px){
+    div.content.chess iframe{
+        transform: scale(0.55);
+        margin: -200px 0;
+    }
+}
+
+@media (max-height: 490px){
+    div.content.chess iframe{
+        transform: scale(0.45);
+        margin: -240px 0;
+    }
+}
+
+@media (max-height: 400px){
+    div.content.chess iframe{
+        transform: scale(0.4);
+        margin: -260px 0;
+    }
 }
 
 div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe div.inner{
@@ -339,7 +384,7 @@ a.top{
     background-color: rgb(200,200,200);
     border-radius: 50%;
     box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
