@@ -253,7 +253,7 @@ div.content{
     width: 100%;
     height: fit-content;
     display: flex;
-    background-color: rgb(210,210,210);
+    background-color: rgb(170,170,170);
     align-items: center;
     gap: 20px;
     text-align: justify;
