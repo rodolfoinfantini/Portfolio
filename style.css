@@ -9,7 +9,10 @@
     --float-delay: 0.2s;
     --blink-duration: 0.35s;
     --show-delay: 0.5s;
-    
+    --bg-black: rgb(30,30,30);
+    --bg-white: rgb(170,170,170);
+    --bg-alt: rgb(100,100,100);
+    --font-alt: white;
 }
 
 /* width */
@@ -253,7 +256,7 @@ div.content{
     width: 100%;
     height: fit-content;
     display: flex;
-    background-color: rgb(170,170,170);
+    background-color: var(--bg-white);
     align-items: center;
     gap: 20px;
     text-align: justify;
@@ -264,7 +267,7 @@ div.content{
 }
 
 div.content.black{
-    background-color: rgb(30,30,30);
+    background-color: var(--bg-black);
     color: white;
 }
 
@@ -293,6 +296,10 @@ div.content img{
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,0.5);
+}
+
+div.content.player img{
+    max-width: 700px;
 }
 
 iframe{
@@ -368,6 +375,38 @@ div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe 
     fill: #fff;
 }
 
+div.content.titles{
+    padding: 50px 0;
+    background-color: var(--bg-alt);
+    color: var(--font-alt);
+}
+
+div.content.titles h1{
+    position: relative;
+    cursor: default;
+    font-size: 60px;
+}
+
+div.content.titles h1:hover::after{
+    width: 100%;
+}
+
+div.content.titles h1::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 4px;
+    background-color: var(--font-alt);
+    transition: width 0.3s ease-in;
+}
+
+div.content.player nav{
+    font-size: 18px;
+}
+
 div.social{
     position: fixed;
     left: -40px;
@@ -439,4 +478,172 @@ progress.scrollprogress::-webkit-progress-bar{
 progress.scrollprogress::-webkit-progress-value{
     background-color: rgba(31, 111, 235, 0.9);
     box-shadow: 0 0 10px 1px rgba(31, 111, 235, 0.8);
+}
+
+
+
+
+
+div.open{
+    width: fit-content;
+    height: fit-content;
+    font-size: 0px;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(30, 30, 30, 0.4);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+    border-radius: 50%;
+}
+
+div.open ion-icon{
+    font-size: 45px;
+}
+
+div.menu{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding: 20px 0;
+    top: -310px;
+    left: 0;
+    list-style: none;
+    z-index: 1;
+    background-color: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(3px);
+    transition: top 0.15s ease-in;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+}
+
+div.menu.show{
+    top: 0;
+}
+
+.menu nav ul li a{
+    color: white!important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.menu nav{
+    width: 100%;
+}
+.menu nav ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    gap: 30px;
+}
+
+.menu nav ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+ion-icon{
+    font-size: 30px;
+}
+.menu nav ul li:nth-child(1) ion-icon{
+    font-size: 33px;
+}
+
+
+
+
+@media (min-width: 800px){
+    div.open{
+        display: none;
+    }
+    div.menu{
+        height: 60px;
+        padding: 0;
+        background-color: rgba(30, 30, 30, 0.4);
+        top: 0;
+    }
+    .menu nav ul li:nth-child(1){
+        margin-left: auto;
+    }
+    .menu nav ul li:last-child{
+        margin-right: auto;
+    }
+    .menu nav ul li a::after{
+        content: '';
+        bottom: -2px;
+        left: 0;
+        background-color: white;
+        position: absolute;
+        width: 0;
+        height: 3px;
+        transition: width 0.3s ease-in;
+    }
+    .menu nav ul li a:hover::after{
+        width: 100%;
+    }
+    .menu nav ul li{
+        font-size: 20px;
+    }
+    ion-icon{
+        font-size: 27px;
+    }
+    .menu nav ul li:nth-child(1) ion-icon{
+        font-size: 29px;
+    }
+    .menu nav ul{
+        flex-direction: row;
+    }
+}
+
+
+a.aabout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    gap: 5px;
+}
+
+a.aabout::after{
+    content: '';
+    bottom: -2px;
+    left: 0;
+    background-color: white;
+    position: absolute;
+    width: 0;
+    height: 3px;
+    transition: width 0.3s ease-in;
+}
+
+a.aabout:hover::after{
+    width: 100%;
+}
+
+a.aabout ion-icon{
+    font-size: 50px;
+}
+
+.csharpsvg{
+    
+}
+
+.csharpsvg path{
+    
+}
+
+.csharpsvg #svg_5, .csharpsvg #svg_6{
+    
 }

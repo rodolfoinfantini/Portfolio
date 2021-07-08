@@ -1,10 +1,24 @@
+let autoStart = true
+let toggleMenu = document.querySelector(".open")
+let menu = document.querySelector(".menu")
+let menuChilds = document.querySelectorAll(".menu nav ul li a")
 const delay = 4500
 const container = document.querySelector("div.container")
 let stop = false
 
 setTimeout(function(){
     container.style.display = "flex"
-}, delay)
+}, autoStart ? 0 : delay)
+
+toggleMenu.onclick = function(){
+    menu.classList.toggle("show")
+}
+
+for(let i = 0; i < menuChilds.length; i++){
+    menuChilds[i].onclick = function(){
+        menu.classList.remove("show")
+    }
+}
 
 document.onscroll = () => {
     let y = window.pageYOffset
