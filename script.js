@@ -1,14 +1,19 @@
-let autoStart = true
+let autoStart = false
 let toggleMenu = document.querySelector(".open")
 let menu = document.querySelector(".menu")
 let menuChilds = document.querySelectorAll(".menu nav ul li a")
 const delay = 4500
 const container = document.querySelector("div.container")
 let stop = false
+console.log("started")
+
+if(autoStart){
+    delay = 0
+}
 
 setTimeout(function(){
     container.style.display = "flex"
-}, autoStart ? 0 : delay)
+}, delay)
 
 toggleMenu.onclick = function(){
     menu.classList.toggle("show")
@@ -98,6 +103,33 @@ const observer3 = new IntersectionObserver(entries => {
     })
 })
 observer3.observe(document.querySelector('.content.tictactoe .inner p'))
+
+const observer4 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.calc .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer4.observe(document.querySelector('.content.calc .inner p'))
+
+const observer5 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.player .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer5.observe(document.querySelector('.content.player .inner p'))
+
+const observer6 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.about .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer6.observe(document.querySelector('.content.about .inner p'))
 
 
 function appHeight() {
