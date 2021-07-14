@@ -2,7 +2,7 @@ let autoStart = false
 let toggleMenu = document.querySelector(".open")
 let menu = document.querySelector(".menu")
 let menuChilds = document.querySelectorAll(".menu nav ul li a")
-const delay = 4500
+let delay = 4500
 const container = document.querySelector("div.container")
 let stop = false
 console.log("started")
@@ -130,6 +130,15 @@ const observer6 = new IntersectionObserver(entries => {
     })
 })
 observer6.observe(document.querySelector('.content.about .inner p'))
+
+const observer7 = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            document.querySelector('.content.skills .inner').style.animation = "floatfromright 2s ease forwards"
+        }
+    })
+})
+observer7.observe(document.querySelector('.content.skills .inner p'))
 
 
 function appHeight() {

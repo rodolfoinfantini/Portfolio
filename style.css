@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
 
+
 :root{
     --mono-space-font: 'IBM Plex Mono', monospace;
     --type-delay: 1s;
@@ -9,10 +10,17 @@
     --float-delay: 0.2s;
     --blink-duration: 0.35s;
     --show-delay: 0.5s;
+    --bg-dark: #1A1525;
+    --bg-white: #fff;
     --bg-black: rgb(30,30,30);
     --bg-white: rgb(170,170,170);
-    --bg-alt: rgb(100,100,100);
+    --bg-alt: #28203a;
     --font-alt: white;
+    --accent-color: #5B4CB3;
+    --accent-color-light: #5B4CB3;
+    --accent-color-gradient: linear-gradient(to bottom right, #6054B8, #5A4CB5);
+    --accent-color-gradient-light: linear-gradient(to bottom right, #6A5ADA, #6355C6);
+    --accent-color-yellow: #FED95D;
 }
 
 /* width */
@@ -51,9 +59,43 @@
     font-family: 'Noto Sans JP';
 }
 
+h2{
+    color: var(--accent-color-yellow);
+}
+
+h3{
+    color: var(--accent-color-yellow);
+    font-size: 30px;
+}
+
+.underline-anim{
+    position: relative;
+}
+
+.underline-anim:hover::after{
+    width: 100%;
+}
+
+.underline-anim::after{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    width: 75%;
+    height: 3px;
+    transition: width 0.6s ease;
+}
+
+.underline-anim.yellow::after{
+    background-color: var(--accent-color-yellow);
+}
+
+
 a{
     text-decoration: none;
-    color: black;
+    color: var(--accent-color-yellow);
 }
 
 .black a{
@@ -69,7 +111,7 @@ a{
 }
 
 div.welcome{
-    background-color: #000;
+    background-color: black;
     width: 100%;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
@@ -80,6 +122,10 @@ div.welcome{
     justify-content: center;
     color: #fff;
     overflow: hidden;
+}
+
+div.welcome h2{
+    color: white;
 }
 
 .content .inner h2{
@@ -170,14 +216,37 @@ div.welcome div.text h2{
     animation: float var(--float-duration) ease-in-out calc(var(--type-duration) + var(--float-delay)) forwards;
 }
 
-svg.arrow{
+.scrolldown{
     position: absolute;
-    bottom: -20px;
+    bottom: 50px;
     left: 50%;
-    transform: translateX(-50%) rotate(180deg);
+    width: 40px;
+    height: 50px;
+    transform: translateX(-50%);
     opacity: 0;
-    animation: floating 0.2s ease-in-out alternate infinite, 
+    color: white;
+    animation: /* floating 0.2s ease-in-out alternate infinite, */
     opacity 1.5s ease-in calc(var(--type-duration) + var(--float-duration) + 0.2s) forwards;
+}
+
+.scrolldown .uil{
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+}
+
+.scrolldown .uil.uil-angle-double-down{
+    font-size: 40px;
+    top: 5px;
+    animation: floating 0.2s ease-in-out alternate infinite;
+}
+
+.uil{
+    color: var(--accent-color);
+    font-size: 50px;
 }
 
 .asnake, .achess{
@@ -218,10 +287,10 @@ svg.arrow{
 
 @keyframes floating {
     from{
-        transform: translateX(-50%) rotate(180deg) translateY(0%);
+        transform: translateX(-50%) translateY(0%);
     }
     to{
-        transform: translateX(-50%) rotate(180deg) translateY(4%);
+        transform: translateX(-50%) translateY(4%);
     }
 }
 
@@ -256,7 +325,7 @@ div.content{
     width: 100%;
     height: fit-content;
     display: flex;
-    background-color: var(--bg-white);
+    background-color: var(--bg-dark);
     align-items: center;
     gap: 20px;
     text-align: justify;
@@ -264,6 +333,7 @@ div.content{
     overflow-x: hidden;
     flex-direction: column;
     opacity: 1;
+    color: white;
 }
 
 div.content.black{
@@ -308,7 +378,7 @@ iframe{
     border-radius: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,0.5);
     overflow: hidden;
-    background-color: rgb(200,200,200);
+    background-color: rgb(160, 160, 160);
 }
 
 div.content.chess iframe{
@@ -360,7 +430,7 @@ div.content.chess iframe{
     }
 }
 
-div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe div.inner, div.content.calc div.inner, div.content.player div.inner, div.content.about div.inner{
+div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe div.inner, div.content.calc div.inner, div.content.player div.inner, div.content.about div.inner, div.content.skills div.inner{
     opacity: 0;
 }
 
@@ -368,23 +438,29 @@ div.content.chess div.inner, div.content.snake div.inner, div.content.tictactoe 
     transform: scale(2);
     transform-origin: bottom;
     margin: 25px 0 20px 0;
-    fill: rgb(30,30,30);
-}
-
-.githubsvg.white{
-    fill: #fff;
+    fill: var(--accent-color-yellow);
 }
 
 div.content.titles{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);
     padding: 50px 0;
     background-color: var(--bg-alt);
     color: var(--font-alt);
+    z-index: 2;
+}
+
+div.content.titles.sub{
+    z-index: 1;
 }
 
 div.content.titles h1{
     position: relative;
     cursor: default;
-    font-size: 60px;
+    font-size: 65px;
+}
+
+div.content.titles.sub h1{
+    font-size: 50px;
 }
 
 div.content.titles h1:hover::after{
@@ -446,12 +522,13 @@ a.top{
     right: 0;
     bottom: 0;
     transform: scale(0.45);
-    background-color: rgb(200,200,200);
+    background-color: var(--accent-color-yellow);
     border-radius: 50%;
     box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 a.top svg{
@@ -463,6 +540,7 @@ a.top svg{
 }
 
 progress.scrollprogress{
+    z-index: 3;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -476,8 +554,8 @@ progress.scrollprogress::-webkit-progress-bar{
 }
 
 progress.scrollprogress::-webkit-progress-value{
-    background-color: rgba(31, 111, 235, 0.9);
-    box-shadow: 0 0 10px 1px rgba(31, 111, 235, 0.8);
+    background-color: var(--accent-color-yellow);
+    box-shadow: 0 0 10px 1px var(--accent-color-yellow);
 }
 
 
@@ -493,7 +571,7 @@ div.open{
     right: 5px;
     cursor: pointer;
     color: white;
-    background-color: rgba(30, 30, 30, 0.4);
+    background-color: var(--bg-alt);
     backdrop-filter: blur(3px);
     z-index: 2;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
@@ -513,11 +591,17 @@ div.menu{
     top: -310px;
     left: 0;
     list-style: none;
+    color: white;
     z-index: 1;
     background-color: rgba(30, 30, 30, 0.6);
     backdrop-filter: blur(3px);
     transition: top 0.15s ease-in;
     box-shadow: 0 0 20px 2px rgba(0,0,0,0.5);
+    z-index: 3;
+}
+
+div.menu p{
+    display: none;
 }
 
 div.menu.show{
@@ -525,12 +609,16 @@ div.menu.show{
 }
 
 .menu nav ul li a{
-    color: white!important;
+    color: white;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 3px;
+}
+
+.menu nav ul li a:hover{
+    color: var(--accent-color-yellow);
 }
 
 .menu nav{
@@ -554,7 +642,18 @@ div.menu.show{
 
 ion-icon{
     font-size: 30px;
+    color: var(--accent-color-yellow);
 }
+
+#csharpsvg path#svg_2{
+    stroke: var(--accent-color-yellow);
+}
+
+#csharpsvg path#svg_6, #csharpsvg path#svg_5{
+    fill: var(--accent-color-yellow);
+
+}
+
 .menu nav ul li:nth-child(1) ion-icon{
     font-size: 33px;
 }
@@ -563,6 +662,11 @@ ion-icon{
 
 
 @media (min-width: 800px){
+    div.menu p{
+        margin: auto;
+        font-size: 20px;
+        display: block;
+    }
     div.open{
         display: none;
     }
@@ -572,7 +676,7 @@ ion-icon{
         background-color: rgba(30, 30, 30, 0.4);
         top: 0;
     }
-    .menu nav ul li:nth-child(1){
+    .menu nav ul li:nth-child(2){
         margin-left: auto;
     }
     .menu nav ul li:last-child{
@@ -582,7 +686,7 @@ ion-icon{
         content: '';
         bottom: -2px;
         left: 0;
-        background-color: white;
+        background-color: var(--accent-color-yellow);
         position: absolute;
         width: 0;
         height: 3px;
@@ -621,7 +725,7 @@ a.aabout::after{
     content: '';
     bottom: -2px;
     left: 0;
-    background-color: white;
+    background-color: var(--accent-color-yellow);
     position: absolute;
     width: 0;
     height: 3px;
@@ -634,16 +738,4 @@ a.aabout:hover::after{
 
 a.aabout ion-icon{
     font-size: 50px;
-}
-
-.csharpsvg{
-    
-}
-
-.csharpsvg path{
-    
-}
-
-.csharpsvg #svg_5, .csharpsvg #svg_6{
-    
 }
