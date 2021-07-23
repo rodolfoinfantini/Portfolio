@@ -53,6 +53,8 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160, 160, 160) rgba(70,70,70);
 }
 
 *:not(div.text *){
@@ -547,13 +549,16 @@ progress.scrollprogress{
     width: 100%;
     height: 4px;
     appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
 }
 
-progress.scrollprogress::-webkit-progress-bar{
+progress.scrollprogress::-webkit-progress-bar, progress.scrollprogress::-webkit-progress-bar{
     background-color: transparent;
 }
 
-progress.scrollprogress::-webkit-progress-value{
+progress.scrollprogress::-webkit-progress-value, progress.scrollprogress::-moz-progress-bar{
     background-color: var(--accent-color-yellow);
     box-shadow: 0 0 10px 1px var(--accent-color-yellow);
 }
